@@ -22,7 +22,7 @@ class Ghasedak:
 			'apikey': self.apikey
 		}
 
-		url = 'https://ghasedakapi.com/api/v1/' + opts['path']
+		url = 'https://api.ghasedak.io/v1/' + opts['path']
 
 		data = opts['data']
 
