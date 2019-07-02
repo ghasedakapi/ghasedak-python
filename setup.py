@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setuptools.setup(
     name="ghasedak",
-    version="0.1.3",
+    version="0.1.4",
     author="Dariush Abbasi",
     author_email="poshtehani@gmail.com",
     description="Ghasedak sms webservice api wrapper for python.",

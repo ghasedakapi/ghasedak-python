@@ -15,7 +15,7 @@ Import `ghasedak` package.
 ```python
 import ghasedak
 
-sms = Ghasedak("Your APIKEY")
+sms = ghasedak.Ghasedak("Your APIKEY")
 
 sms.send({'message':'hello, world!', 'receptor' : '09xxxxxxxxx', 'linenumber': 'xxxx', 'senddate': '', 'checkid': ''})
 
