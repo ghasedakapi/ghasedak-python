@@ -2,19 +2,19 @@
 """
 	ghasedak.py
 	~~~~~~~~~
-	:copyright: (c) 2018 by Ghasedak ICT
-	:license: BSD-3-Clause-Clear, see LICENSE for more details.
+	:copyright: (c) 2019 by Ghasedak ICT
+	:license: MIT, see LICENSE for more details.
 """
 import requests
 import json
 
 class Ghasedak:
-    """docstring for Ghasedak."""
-    def __init__(self, apikey):
-        self.apikey = apikey
+	"""docstring for Ghasedak."""
+	def __init__(self, apikey):
+		self.apikey = apikey
 
 	# send request to api
-	def request_api(opts):
+	def request_api(self, opts):
 		headers = {
 			'Accept': "application/json",
 			"Content-Type": "application/x-www-form-urlencoded",
@@ -22,7 +22,7 @@ class Ghasedak:
 			'apikey': self.apikey
 		}
 
-		url = 'https://api.ghasedak.io/v1/' + opts['path']
+		url = 'https://api.ghasedak.io/v2/' + opts['path']
 
 		data = opts['data']
 
@@ -30,7 +30,7 @@ class Ghasedak:
 
 		return r
 
-	def send(opts):
+	def send(self, opts):
 		data = {}
 		data['path'] = "sms/send/simple"
 		data['data'] = {
@@ -41,13 +41,13 @@ class Ghasedak:
 			'checkid': opts['checkid']
 		}
 
-		r = request_api(data)
-		if r.status_code == 200 {
+		r = self.request_api(data)
+		if r.status_code == 200: 
 			return True
-		}
+		
 		return False
 
-	def bulk1(opts):
+	def bulk1(self, opts):
 		data = {}
 		data['path'] = "sms/send/bulk"
 		data['data'] = {
@@ -59,12 +59,12 @@ class Ghasedak:
 		}
 
 		r = request_api(data)
-		if r.status_code == 200 {
+		if r.status_code == 200:
 			return True
-		}
+		
 		return False
 
-	def bulk2(opts):
+	def bulk2(self, opts):
 		data = {}
 		data['path'] = "sms/send/bulk2"
 		data['data'] = {
@@ -76,12 +76,12 @@ class Ghasedak:
 		}
 
 		r = request_api(data)
-		if r.status_code == 200 {
+		if r.status_code == 200:
 			return True
-		}
+		
 		return False
 
-	def voicecall(opts):
+	def voicecall(self, opts):
 		data = {}
 		data['path'] = "voice/send"
 		data['data'] = {
@@ -91,12 +91,12 @@ class Ghasedak:
 		}
 
 		r = request_api(data)
-		if r.status_code == 200 {
+		if r.status_code == 200:
 			return True
-		}
+		
 		return False
 
-	def template(opts):
+	def template(self, opts):
 		data = {}
 		data['path'] = "sms/verify"
 		data['data'] = {
@@ -109,12 +109,12 @@ class Ghasedak:
 		}
 
 		r = request_api(data)
-		if r.status_code == 200 {
+		if r.status_code == 200:
 			return True
-		}
+		
 		return False
 
-	def verification(opts):
+	def verification(self, opts):
 		data = {}
 		data['path'] = "sms/send/verification"
 		data['data'] = {
@@ -128,12 +128,12 @@ class Ghasedak:
 		}
 
 		r = request_api(data)
-		if r.status_code == 200 {
+		if r.status_code == 200:
 			return True
-		}
+		
 		return False
 
-	def check_verification(opts):
+	def check_verification(self, opts):
 		data = {}
 		data['path'] = "sms/check/verification"
 		data['data'] = {
@@ -143,7 +143,7 @@ class Ghasedak:
 		}
 
 		r = request_api(data)
-		if r.status_code == 200 {
+		if r.status_code == 200:
 			return True
-		}
+		
 		return False

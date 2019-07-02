@@ -14,8 +14,14 @@ Import `ghasedak` package.
 
 ```python
 import ghasedak
+
+sms = Ghasedak("Your APIKEY")
+
+sms.send({'message':'hello, world!', 'receptor' : '09xxxxxxxxx', 'linenumber': 'xxxx', 'senddate': '', 'checkid': ''})
+
+
 ```
 
 ## license
 
-Released under the BSD-3-Clause-Clear License.
+Released under the MIT License.
