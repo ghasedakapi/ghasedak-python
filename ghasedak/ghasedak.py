@@ -36,9 +36,9 @@ class Ghasedak:
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber'],
-			'senddate': opts['senddate'],
-			'checkid': opts['checkid']
+			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
+			'senddate': opts['senddate']  if 'senddate' in opts.keys() else "" ,
+			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
 		}
 
 		r = self.request_api(data)
@@ -53,12 +53,12 @@ class Ghasedak:
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber'],
-			'senddate': opts['senddate'],
-			'checkid': opts['checkid']
+			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
+			'senddate': opts['senddate']  if 'senddate' in opts.keys() else "" ,
+			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
 		}
 
-		r = request_api(data)
+		r = self.request_api(data)
 		if r.status_code == 200:
 			return True
 		
@@ -70,12 +70,12 @@ class Ghasedak:
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber'],
-			'senddate': opts['senddate'],
-			'checkid': opts['checkid']
+			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
+			'senddate': opts['senddate'] if 'senddate' in opts.keys() else "" ,
+			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
 		}
 
-		r = request_api(data)
+		r = self.request_api(data)
 		if r.status_code == 200:
 			return True
 		
@@ -87,10 +87,10 @@ class Ghasedak:
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
-			'senddate': opts['senddate']
+			'senddate': opts['senddate']  if 'senddate' in opts.keys() else "" 
 		}
 
-		r = request_api(data)
+		r = self.request_api(data)
 		if r.status_code == 200:
 			return True
 		
@@ -101,14 +101,14 @@ class Ghasedak:
 		data['path'] = "sms/verify"
 		data['data'] = {
 			'receptor': opts['receptor'],
-			'type': opts['type'],
+			'type': opts['type']  if 'type' in opts.keys() else "" ,
 			'template': opts['template'],
 			'param1': opts['param1'],
-			'param2': opts['param2'],
-			'param3': opts['param3']
+			'param2': opts['param2']  if 'param2' in opts.keys() else "" ,
+			'param3': opts['param3']  if 'param3' in opts.keys() else "" 
 		}
 
-		r = request_api(data)
+		r = self.request_api(data)
 		if r.status_code == 200:
 			return True
 		
@@ -119,15 +119,15 @@ class Ghasedak:
 		data['path'] = "sms/send/verification"
 		data['data'] = {
 			'receptor': opts['receptor'],
-			'type': opts['type'],
+			'type': opts['type']  if 'type' in opts.keys() else "" ,
 			'template': opts['template'],
-			'ip': opts['ip'],
+			'ip': opts['ip']  if 'ip' in opts.keys() else "" ,
 			'param1': opts['param1'],
-			'param2': opts['param2'],
-			'param3': opts['param3']
+			'param2': opts['param2'] if 'param2' in opts.keys() else "" ,
+			'param3': opts['param3'] if 'param3' in opts.keys() else "" 
 		}
 
-		r = request_api(data)
+		r = self.request_api(data)
 		if r.status_code == 200:
 			return True
 		
@@ -139,10 +139,10 @@ class Ghasedak:
 		data['data'] = {
 			'receptor': opts['receptor'],
 			'token': opts['token'],
-			'ip': opts['ip']
+			'ip': opts['ip']  if 'ip' in opts.keys() else "" 
 		}
 
-		r = request_api(data)
+		r = self.request_api(data)
 		if r.status_code == 200:
 			return True
 		
