@@ -66,7 +66,24 @@ class Ghasedak:
 
 	def bulk2(self, opts):
 		data = {}
-		data['path'] = "sms/send/bulk2"
+		data['path'] = "sms/send/pair"
+		data['data'] = {
+			'message': opts['message'],
+			'receptor': opts['receptor'],
+			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
+			'senddate': opts['senddate'] if 'senddate' in opts.keys() else "" ,
+			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
+		}
+
+		r = self.request_api(data)
+		if r.status_code == 200:
+			return True
+		
+		return False
+	
+	def pair(self, opts):
+		data = {}
+		data['path'] = "sms/send/pair"
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
