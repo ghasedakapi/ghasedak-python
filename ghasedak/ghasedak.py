@@ -32,7 +32,7 @@ class Ghasedak:
 
 	def send(self, opts):
 		data = {}
-		data['path'] = "sms/send/simple"
+		data['path'] = "sms/send/simple?agent=python"
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
@@ -49,7 +49,7 @@ class Ghasedak:
 
 	def bulk1(self, opts):
 		data = {}
-		data['path'] = "sms/send/bulk"
+		data['path'] = "sms/send/bulk?agent=python"
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
@@ -66,7 +66,7 @@ class Ghasedak:
 
 	def bulk2(self, opts):
 		data = {}
-		data['path'] = "sms/send/pair"
+		data['path'] = "sms/send/pair?agent=python"
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
@@ -83,7 +83,7 @@ class Ghasedak:
 	
 	def pair(self, opts):
 		data = {}
-		data['path'] = "sms/send/pair"
+		data['path'] = "sms/send/pair?agent=python"
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
@@ -100,7 +100,7 @@ class Ghasedak:
 
 	def voicecall(self, opts):
 		data = {}
-		data['path'] = "voice/send"
+		data['path'] = "voice/send?agent=python"
 		data['data'] = {
 			'message': opts['message'],
 			'receptor': opts['receptor'],
@@ -115,7 +115,7 @@ class Ghasedak:
 
 	def template(self, opts):
 		data = {}
-		data['path'] = "sms/verify"
+		data['path'] = "sms/verify?agent=python"
 		data['data'] = {
 			'receptor': opts['receptor'],
 			'type': opts['type']  if 'type' in opts.keys() else "" ,
@@ -133,7 +133,7 @@ class Ghasedak:
 
 	def verification(self, opts):
 		data = {}
-		data['path'] = "sms/send/verification"
+		data['path'] = "sms/send/verification?agent=python"
 		data['data'] = {
 			'receptor': opts['receptor'],
 			'type': opts['type']  if 'type' in opts.keys() else "" ,
@@ -152,7 +152,7 @@ class Ghasedak:
 
 	def check_verification(self, opts):
 		data = {}
-		data['path'] = "sms/check/verification"
+		data['path'] = "sms/check/verification?agent=python"
 		data['data'] = {
 			'receptor': opts['receptor'],
 			'token': opts['token'],
