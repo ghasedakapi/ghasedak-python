@@ -1,6 +1,6 @@
 # Ghasedak-python
 
-[Ghasedak sms webservice](https://ghasedak.io) python package.
+[Ghasedak sms webservice](https://ghasedak.me) python package.
 
 ## installation
 
