@@ -22,7 +22,7 @@ class Ghasedak:
 			'apikey': self.apikey
 		}
 
-		url = 'https://api.ghasedak.io/v2/' + opts['path']
+		url = 'https://api.ghasedak.me/v2/' + opts['path']
 
 		data = opts['data']
 
@@ -131,7 +131,8 @@ class Ghasedak:
 		
 		return False
 
-	def verification(self, opts):
+	def verificat
+	n(self, opts):
 		data = {}
 		data['path'] = "sms/send/verification?agent=python"
 		data['data'] = {
