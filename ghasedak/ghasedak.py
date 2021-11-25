@@ -131,7 +131,8 @@ class Ghasedak:
 		
 		return False
 
-	def verification(self, opts):
+	def verificat
+	n(self, opts):
 		data = {}
 		data['path'] = "sms/send/verification?agent=python"
 		data['data'] = {
