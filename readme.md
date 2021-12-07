@@ -20,7 +20,7 @@ sms = ghasedak.Ghasedak("Your APIKEY")
 
 sms.send({'message':'hello, world!', 'receptor' : '09xxxxxxxxx', 'linenumber': 'xxxx', 'senddate': '', 'checkid': ''})
 
-sms.bulk1({'message':'hello, world!', 'receptor' : '09xxxxxxxxx,09xxxxxxxxx,09xxxxxxxxx', 'linenumber': 'xxxx', 'senddate': '', 'checkid': ''})
+sms.bulk1({'message':'hello, world!', 'receptor' : ['09xxxxxxxxx','09xxxxxxxxx','09xxxxxxxxx'], 'linenumber': 'xxxx', 'senddate': '', 'checkid': ''})
 ```
 
 ## license
