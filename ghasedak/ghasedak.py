@@ -8,159 +8,168 @@
 import requests
 import json
 
+
 class Ghasedak:
-	"""docstring for Ghasedak."""
-	def __init__(self, apikey):
-		self.apikey = apikey
+    """docstring for Ghasedak."""
 
-	# send request to api
-	def request_api(self, opts):
-		headers = {
-			'Accept': "application/json",
-			"Content-Type": "application/x-www-form-urlencoded",
-			'charset': "utf-8",
-			'apikey': self.apikey
-		}
+    def __init__(self, apikey):
+        self.apikey = apikey
 
-		url = 'https://api.ghasedak.me/v2/' + opts['path']
+    # send request to api
+    def request_api(self, opts):
+        headers = {
+            'Accept': "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+            'charset': "utf-8",
+            'apikey': self.apikey,
 
-		data = opts['data']
+        }
 
-		r = requests.post(url, data=data, headers=headers)
+        url = 'https://api.ghasedak.me/v2/' + opts['path']
 
-		return r
+        data = opts['data']
 
-	def send(self, opts):
-		data = {}
-		data['path'] = "sms/send/simple?agent=python"
-		data['data'] = {
-			'message': opts['message'],
-			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
-			'senddate': opts['senddate']  if 'senddate' in opts.keys() else "" ,
-			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
-		}
+        r = requests.post(url, data=data, headers=headers)
 
-		r = self.request_api(data)
-		if r.status_code == 200: 
-			return True
-		
-		return False
+        return r
 
-	def bulk1(self, opts):
-		data = {}
-		data['path'] = "sms/send/bulk?agent=python"
-		data['data'] = {
-			'message': opts['message'],
-			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
-			'senddate': opts['senddate']  if 'senddate' in opts.keys() else "" ,
-			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
-		}
+    def status(self, opts):
+        data = {}
+        data['path'] = "sms/status?agent=python"
+        data['data'] = {
+            'id': opts['id'],
+            'type': opts['type']
+        }
+        
+        r = self.request_api(data)
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
+        
+        jr = r.json()
+        # print(jr["items"])
+        
+        if r.status_code == 200:
+            return jr["items"]
 
-	def bulk2(self, opts):
-		data = {}
-		data['path'] = "sms/send/pair?agent=python"
-		data['data'] = {
-			'message': opts['message'],
-			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
-			'senddate': opts['senddate'] if 'senddate' in opts.keys() else "" ,
-			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
-		}
+        return []
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
-	
-	def pair(self, opts):
-		data = {}
-		data['path'] = "sms/send/pair?agent=python"
-		data['data'] = {
-			'message': opts['message'],
-			'receptor': opts['receptor'],
-			'linenumber': opts['linenumber']  if 'linenumber' in opts.keys() else "" ,
-			'senddate': opts['senddate'] if 'senddate' in opts.keys() else "" ,
-			'checkid': opts['checkid']  if 'checkid' in opts.keys() else "" 
-		}
+    def send(self, opts):
+        data = {}
+        data['path'] = "sms/send/simple?agent=python"
+        data['data'] = {
+            'message': opts['message'],
+            'receptor': opts['receptor'],
+            'linenumber': opts['linenumber'] if 'linenumber' in opts.keys() else "",
+            'senddate': opts['senddate'] if 'senddate' in opts.keys() else "",
+            'checkid': opts['checkid'] if 'checkid' in opts.keys() else ""
+        }
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
+        r = self.request_api(data)
 
-	def voicecall(self, opts):
-		data = {}
-		data['path'] = "voice/send?agent=python"
-		data['data'] = {
-			'message': opts['message'],
-			'receptor': opts['receptor'],
-			'senddate': opts['senddate']  if 'senddate' in opts.keys() else "" 
-		}
+        # # Get status data right after sending
+        # jdata = json.loads(r.text)
+        # self.status({str(jdata['items'][0]), '1'})
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
+        if r.status_code == 200:
+            return True
 
-	def template(self, opts):
-		data = {}
-		data['path'] = "sms/verify?agent=python"
-		data['data'] = {
-			'receptor': opts['receptor'],
-			'type': opts['type']  if 'type' in opts.keys() else "" ,
-			'template': opts['template'],
-			'param1': opts['param1'],
-			'param2': opts['param2']  if 'param2' in opts.keys() else "" ,
-			'param3': opts['param3']  if 'param3' in opts.keys() else "" 
-		}
+        return False
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
+    def bulk1(self, opts):
+        data = {}
+        data['path'] = "sms/send/bulk?agent=python"
+        data['data'] = {
+            'message': opts['message'],
+            'receptor': opts['receptor'],
+            'linenumber': opts['linenumber'] if 'linenumber' in opts.keys() else "",
+            'senddate': opts['senddate'] if 'senddate' in opts.keys() else "",
+            'checkid': opts['checkid'] if 'checkid' in opts.keys() else ""
+        }
 
-	def verification(self, opts):
-		data = {}
-		data['path'] = "sms/send/verification?agent=python"
-		data['data'] = {
-			'receptor': opts['receptor'],
-			'type': opts['type']  if 'type' in opts.keys() else "" ,
-			'template': opts['template'],
-			'ip': opts['ip']  if 'ip' in opts.keys() else "" ,
-			'param1': opts['param1'],
-			'param2': opts['param2'] if 'param2' in opts.keys() else "" ,
-			'param3': opts['param3'] if 'param3' in opts.keys() else "" 
-		}
+        r = self.request_api(data)
+        if r.status_code == 200:
+            return True
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
+        return False
 
-	def check_verification(self, opts):
-		data = {}
-		data['path'] = "sms/check/verification?agent=python"
-		data['data'] = {
-			'receptor': opts['receptor'],
-			'token': opts['token'],
-			'ip': opts['ip']  if 'ip' in opts.keys() else "" 
-		}
+    def bulk2(self, opts):
+        data = {}
+        data['path'] = "sms/send/pair?agent=python"
+        data['data'] = {
+            'message': opts['message'],
+            'receptor': opts['receptor'],
+            'linenumber': opts['linenumber'] if 'linenumber' in opts.keys() else "",
+            'senddate': opts['senddate'] if 'senddate' in opts.keys() else "",
+            'checkid': opts['checkid'] if 'checkid' in opts.keys() else ""
+        }
 
-		r = self.request_api(data)
-		if r.status_code == 200:
-			return True
-		
-		return False
+        r = self.request_api(data)
+        if r.status_code == 200:
+            return True
+
+        return False
+
+    def pair(self, opts):
+        data = {}
+        data['path'] = "sms/send/pair?agent=python"
+        data['data'] = {
+            'message': opts['message'],
+            'receptor': opts['receptor'],
+            'linenumber': opts['linenumber'] if 'linenumber' in opts.keys() else "",
+            'senddate': opts['senddate'] if 'senddate' in opts.keys() else "",
+            'checkid': opts['checkid'] if 'checkid' in opts.keys() else ""
+        }
+
+        r = self.request_api(data)
+        if r.status_code == 200:
+            return True
+
+        return False
+
+    def voicecall(self, opts):
+        data = {}
+        data['path'] = "voice/send?agent=python"
+        data['data'] = {
+            'message': opts['message'],
+            'receptor': opts['receptor'],
+            'senddate': opts['senddate'] if 'senddate' in opts.keys() else ""
+        }
+
+        r = self.request_api(data)
+        if r.status_code == 200:
+            return True
+
+        return False
+
+    def verification(self, opts):
+        data = {}
+        data['path'] = "verification/send/simple?agent=python"
+        data['data'] = {
+            'receptor': opts['receptor'],
+            'type': opts['type'] if 'type' in opts.keys() else "",
+            'template': opts['template'],
+            'ip': opts['ip'] if 'ip' in opts.keys() else "",
+            'param1': opts['param1'],
+            'param2': opts['param2'] if 'param2' in opts.keys() else "",
+            'param3': opts['param3'] if 'param3' in opts.keys() else ""
+        }
+
+        r = self.request_api(data)
+        if r.status_code == 200:
+            return True
+
+        return False
+
+    def check_verification(self, opts):
+        data = {}
+        data['path'] = "sms/check/verification?agent=python"
+        data['data'] = {
+            'receptor': opts['receptor'],
+            'token': opts['token'],
+            'ip': opts['ip'] if 'ip' in opts.keys() else ""
+        }
+
+        r = self.request_api(data)
+        if r.status_code == 200:
+            return True
+
+        return False
