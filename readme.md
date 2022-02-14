@@ -32,7 +32,7 @@ sms.bulk2({'message':'hello, world!,another massage', 'receptor' : '09xxxxxxxxx,
 print(sms.status({'id': 'messageId', 'type': '1'}))
 
 #send verification massages:
-sms.verification({'receptor': '09xxxxxxxxx','type': '1','template': 'Your Template','ip': 'Your Ip','param1': '','param2': '','param3': ''})
+sms.verification({'receptor': '09xxxxxxxxx','type': '1','template': 'Your Template','param1': '','param2': '','param3': ''})
 ```
 
 ## license
