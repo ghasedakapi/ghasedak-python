@@ -1,1 +1,0 @@
-from .ghasedak import Ghasedak

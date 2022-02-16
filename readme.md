@@ -7,17 +7,17 @@
 You can simply install ghasedak python package with `pip`:
 
 ```shell
-pip install ghasedak
+pip install ghasedakpack
 ```
 
 ## usage
 
 
 ```python
-import ghasedak
+import ghasedakpack
 
 #create an instance:
-sms = ghasedak.Ghasedak("Your APIKEY")
+sms = ghasedakpack.Ghasedak("Your APIKEY")
 
 #send a single message to a single number:
 sms.send({'message':'hello, world!', 'receptor' : '09xxxxxxxxx', 'linenumber': 'xxxx', 'senddate': '', 'checkid': ''})

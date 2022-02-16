@@ -4,8 +4,8 @@ with open("readme.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="ghasedak",
-    version="0.1.7",
+    name="ghasedakpack",
+    version="0.1.8",
     author="Ghasedak Group",
     author_email="",
     description="Ghasedak sms webservice api wrapper for python.",
