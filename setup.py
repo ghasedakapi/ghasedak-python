@@ -1,7 +1,7 @@
 import setuptools
 
-with open("readme.md", "r") as fh:
-    long_description = fh.read()
+# with open("readme.md", "r") as fh:
+#     long_description = fh.read()
 
 setuptools.setup(
     name="ghasedakpack",
@@ -9,7 +9,7 @@ setuptools.setup(
     author="Ghasedak Group",
     author_email="",
     description="Ghasedak sms webservice api wrapper for python.",
-    long_description=long_description,
+#     long_description=long_description,
     long_description_content_type="text/markdown",
     url="http://github.com/ghasedakapi/ghasedak-python",
     packages=setuptools.find_packages(),
