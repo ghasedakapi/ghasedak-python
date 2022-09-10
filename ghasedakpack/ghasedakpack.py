@@ -150,9 +150,16 @@ class Ghasedak:
             'ip': opts['ip'] if 'ip' in opts.keys() else "",
             'param1': opts['param1'],
             'param2': opts['param2'] if 'param2' in opts.keys() else "",
-            'param3': opts['param3'] if 'param3' in opts.keys() else ""
+            'param3': opts['param3'] if 'param3' in opts.keys() else "",
+            'param4': opts['param3'] if 'param3' in opts.keys() else "",
+            'param5': opts['param3'] if 'param3' in opts.keys() else "",
+            'param6': opts['param3'] if 'param3' in opts.keys() else "",
+            'param7': opts['param3'] if 'param3' in opts.keys() else "",
+            'param8': opts['param3'] if 'param3' in opts.keys() else "",
+            'param9': opts['param3'] if 'param3' in opts.keys() else "",
+            'param10': opts['param3'] if 'param3' in opts.keys() else ""
         }
-
+        
         r = self.request_api(data)
         if r.status_code == 200:
             return True
