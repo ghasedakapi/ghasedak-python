@@ -151,13 +151,13 @@ class Ghasedak:
             'param1': opts['param1'],
             'param2': opts['param2'] if 'param2' in opts.keys() else "",
             'param3': opts['param3'] if 'param3' in opts.keys() else "",
-            'param4': opts['param3'] if 'param3' in opts.keys() else "",
-            'param5': opts['param3'] if 'param3' in opts.keys() else "",
-            'param6': opts['param3'] if 'param3' in opts.keys() else "",
-            'param7': opts['param3'] if 'param3' in opts.keys() else "",
-            'param8': opts['param3'] if 'param3' in opts.keys() else "",
-            'param9': opts['param3'] if 'param3' in opts.keys() else "",
-            'param10': opts['param3'] if 'param3' in opts.keys() else ""
+            'param4': opts['param4'] if 'param4' in opts.keys() else "",
+            'param5': opts['param5'] if 'param5' in opts.keys() else "",
+            'param6': opts['param6'] if 'param6' in opts.keys() else "",
+            'param7': opts['param7'] if 'param7' in opts.keys() else "",
+            'param8': opts['param8'] if 'param8' in opts.keys() else "",
+            'param9': opts['param9'] if 'param9' in opts.keys() else "",
+            'param10': opts['param10'] if 'param10' in opts.keys() else ""
         }
         
         r = self.request_api(data)
