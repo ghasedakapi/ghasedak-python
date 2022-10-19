@@ -84,6 +84,7 @@ class Ghasedak:
             'senddate': opts['senddate'] if 'senddate' in opts.keys() else "",
             'checkid': opts['checkid'] if 'checkid' in opts.keys() else ""
         }
+        print(opts['receptor'])
 
         r = self.request_api(data)
         if r.status_code == 200:
@@ -180,3 +181,18 @@ class Ghasedak:
             return True
 
         return False
+
+    def receive(self, opts):
+        data = {}
+        data['path'] = "sms/receive/last?agent=python"
+        data['data'] = {
+            'linenumber': opts['linenumber'],
+            'isread': opts['isread']
+        }
+
+        r = self.request_api(data)
+        jr = r.json()
+        if r.status_code == 200:
+            return jr["items"]
+
+        return []

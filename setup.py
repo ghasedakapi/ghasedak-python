@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name="ghasedakpack",
-    version="0.1.11",
+    version="0.1.12",
     author="Ghasedak Group",
     author_email="",
     description="Ghasedak sms webservice api wrapper for python.",
