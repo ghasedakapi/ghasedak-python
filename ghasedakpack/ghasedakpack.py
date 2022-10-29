@@ -12,7 +12,8 @@ import json
 class Ghasedak:
     """docstring for Ghasedak."""
 
-    def __init__(self, apikey):
+    def __init__(self, apikey,baseurl='https://api.ghasedak.me'):
+        self.baseurl = baseurl
         self.apikey = apikey
 
     # send request to api
@@ -25,8 +26,7 @@ class Ghasedak:
 
         }
 
-        url = 'https://api.ghasedak.me/v2/' + opts['path']
-
+        url = (self.baseurl + '/v2/')+ opts['path']
         data = opts['data']
 
         r = requests.post(url, data=data, headers=headers)
